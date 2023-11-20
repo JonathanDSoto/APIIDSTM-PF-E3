@@ -46,10 +46,24 @@
             </div>
             <!-- BEGIN: Registration Form -->
             <form class="space-y-4" action='#'>
+            <div class="flex gap-2">
+                <div class="fromGroup">
+                  <label class="block capitalize form-label">Nombre</label>
+                  <div class="relative ">
+                    <input type="text" name="firstname" class="  form-control py-2" placeholder="Nombre">
+                  </div>
+                </div>
+                <div class="fromGroup">
+                  <label class="block capitalize form-label">Apellido</label>
+                  <div class="relative ">
+                    <input type="text" name="lastname" class="  form-control py-2" placeholder="Apellido">
+                  </div>
+                </div>
+              </div>
               <div class="fromGroup">
-                <label class="block capitalize form-label">Nombre</label>
+                <label class="block capitalize form-label">Nombre de usuario</label>
                 <div class="relative ">
-                  <input type="text" name="name" class="  form-control py-2" placeholder="Nombre">
+                  <input type="text" name="username" class="form-control py-2" placeholder="Nombre de usuario">
                 </div>
               </div>
               <div class="fromGroup">
