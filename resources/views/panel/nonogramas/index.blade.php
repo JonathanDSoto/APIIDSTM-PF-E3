@@ -38,17 +38,21 @@
                                 <th scope="col" class=" table-th w-[100px] ">
                                   Id
                                 </th>
-
                                 <th scope="col" class=" table-th ">
                                   Nombre
                                 </th>
                                 <th scope="col" class=" table-th ">
-                                  Usuario
+                                  Colores
                                 </th>
                                 <th scope="col" class=" table-th ">
-                                  Email
+                                  Tamaño
                                 </th>
-
+                                <th scope="col" class=" table-th ">
+                                  Dificultad
+                                </th>
+                                <th scope="col" class=" table-th ">
+                                  Categoria
+                                </th>
                                 <th scope="col" class=" table-th w-[100px] ">
                                   Accion
                                 </th>
@@ -60,9 +64,11 @@
                                 @for ($i = 1; $i < 50; $i++)
                                     <tr>
                                     <td class="table-td">{{ $i }}</td>
-                                    <td class="table-td ">{{ fake()->firstName() }} {{ fake()->lastName() }}</td>
-                                    <td class="table-td ">{{ fake()->userName() }}</td>
-                                    <td class="table-td ">{{ fake()->email() }}</td>
+                                    <td class="table-td">Nombre {{ $i }}</td>
+                                    <td class="table-td">Colores {{ $i }}</td>
+                                    <td class="table-td">Tamaño {{ $i }}</td>
+                                    <td class="table-td">Dificultad {{ $i }}</td>
+                                    <td class="table-td">Categoria {{ $i }}</td>
                                     <td class="table-td ">
                                         <div>
                                             <div class="relative">
