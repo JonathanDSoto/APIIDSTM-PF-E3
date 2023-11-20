@@ -16,3 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin', function () {
+    return view('panel.index');
+});
+
+Route::get('/admin/categorias', function () {
+    return view('panel.categorias.index');
+});
+
+Route::get('/admin/etiquetas', function () {
+    return view('panel.etiquetas.index');
+});
+
+Route::get('/admin/nivelDificultad', function () {
+    return view('panel.nivelDificultad.index');
+});
+
+Route::get('/admin/tamaños', function () {
+    return view('panel.tamaños.index');
+});
