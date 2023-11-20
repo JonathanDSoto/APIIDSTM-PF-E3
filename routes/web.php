@@ -36,3 +36,7 @@ Route::get('/admin/nivelDificultad', function () {
 Route::get('/admin/tamaños', function () {
     return view('panel.tamaños.index');
 });
+
+Route::get('/signin', function () {
+    return view('app.signin');
+});
