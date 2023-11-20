@@ -40,3 +40,7 @@ Route::get('/admin/tamaños', function () {
 Route::get('/signin', function () {
     return view('app.signin');
 });
+
+Route::get('/signup', function () {
+    return view('app.signup');
+});
