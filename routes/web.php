@@ -37,6 +37,14 @@ Route::get('/admin/tamaños', function () {
     return view('panel.tamaños.index');
 });
 
+Route::get('/admin/usuarios', function () {
+    return view('panel.usuarios.index');
+});
+
+Route::get('/admin/nonogramas', function () {
+    return view('panel.nonogramas.index');
+});
+
 Route::get('/signin', function () {
     return view('app.signin');
 });
