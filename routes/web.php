@@ -41,6 +41,10 @@ Route::get('/admin/usuarios', function () {
     return view('panel.usuarios.index');
 });
 
+Route::get('/admin/usuarios/{id}', function () {
+    return view('panel.usuarios.details');
+});
+
 Route::get('/admin/nonogramas', function () {
     return view('panel.nonogramas.index');
 });
