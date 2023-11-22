@@ -49,6 +49,18 @@ Route::get('/admin/nonogramas', function () {
     return view('panel.nonogramas.index');
 });
 
+Route::get('/admin/nonogramas/{id}', function () {
+    return view('panel.nonogramas.details');
+});
+
+Route::get('/admin/modales', function () {
+    return view('panel.modales.index');
+});
+
+Route::get('/admin/modales', function () {
+    return view('panel.modales.ejemplo');
+});
+
 Route::get('/signin', function () {
     return view('app.signin');
 });
