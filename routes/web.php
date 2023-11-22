@@ -56,3 +56,7 @@ Route::get('/signin', function () {
 Route::get('/signup', function () {
     return view('app.signup');
 });
+
+Route::get('/forgetpassword', function () {
+    return view('app.forgetpassword');
+});
