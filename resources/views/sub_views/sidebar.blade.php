@@ -1,4 +1,4 @@
-<div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
+<div class="sidebar-wrapper group  hidden xl:w-[248px] xl:block">
 	<div id="bodyOverlay" class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
 	<div class="logo-segment">
 		<a class="flex items-center" href="index.html">
