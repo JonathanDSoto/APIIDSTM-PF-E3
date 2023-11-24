@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Nonogram extends Model
 {
     use HasFactory;
+    
+    public $fillable = [
+        'slug',
+        'name',
+        'data',
+        'colors',
+        'width',
+        'height',
+    ];
 }

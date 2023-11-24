@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Nonogram;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNonogramRequest;
 use App\Http\Requests\UpdateNonogramRequest;
+use App\Http\Resources\NonogramCollection;
+use App\Http\Resources\NonogramResource;
+use Exception;
 
 class NonogramController extends Controller
 {
@@ -13,15 +17,7 @@ class NonogramController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return new NonogramCollection(Nonogram::paginate());
     }
 
     /**
@@ -29,7 +25,8 @@ class NonogramController extends Controller
      */
     public function store(StoreNonogramRequest $request)
     {
-        //
+        $nonogram = Nonogram::create($request->all());
+        return new NonogramResource($nonogram);
     }
 
     /**
@@ -37,15 +34,7 @@ class NonogramController extends Controller
      */
     public function show(Nonogram $nonogram)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Nonogram $nonogram)
-    {
-        //
+        return new NonogramResource($nonogram);
     }
 
     /**
@@ -53,7 +42,10 @@ class NonogramController extends Controller
      */
     public function update(UpdateNonogramRequest $request, Nonogram $nonogram)
     {
-        //
+        if($nonogram->update($request->all())){
+            return $nonogram;
+        }
+        return response()->setStatusCode(404);
     }
 
     /**
@@ -61,6 +53,9 @@ class NonogramController extends Controller
      */
     public function destroy(Nonogram $nonogram)
     {
-        //
+        if($nonogram->delete()){
+            return response('');
+        }
+        return response('')->setStatusCode(404);
     }
 }

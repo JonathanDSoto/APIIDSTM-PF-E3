@@ -11,7 +11,7 @@ class StoreNonogramRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class StoreNonogramRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'slug' => [ 'required', 'string', 'unique:nonograms' ],
+            'name' => [ 'required', 'string' ],
+            'colors' => [ 'required', 'array' ],
+            'colors.*' => [ 'required', 'hex_color' ],
+            'width' => [ 'required', 'integer' ],
+            'height' => [ 'required', 'integer' ],
+            'data' => [ 'required', 'array', 'size:' . $this['height'] ?? -1 ],
+            'data.*' => [ 'required', 'array', 'size:' . $this['width'] ?? -1 ],
+            'data.*.*' => [ 'required', 'integer' ],
         ];
+    }
+    
+    public function passedValidation()
+    {
+        $this['data'] = json_encode($this['data']);
+        $this['colors'] = json_encode($this['colors']);
     }
 }
