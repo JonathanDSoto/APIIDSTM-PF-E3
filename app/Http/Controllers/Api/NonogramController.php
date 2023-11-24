@@ -43,7 +43,7 @@ class NonogramController extends Controller
     public function update(UpdateNonogramRequest $request, Nonogram $nonogram)
     {
         if($nonogram->update($request->all())){
-            return $nonogram;
+            return new NonogramResource($nonogram);
         }
         return response()->setStatusCode(404);
     }
