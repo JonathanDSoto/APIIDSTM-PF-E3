@@ -22,7 +22,7 @@ class NonogramResource extends JsonResource
             'height' => $this->height,
             'colors' => json_decode($this->colors),
             'data' => json_decode($this->data),
-            'category' => $this->category
+            'category' => new CategoryResource($this->category)
             //'created_at' => $this->created_at,
             //'updated_at' => $this->updated_at,
         ];
