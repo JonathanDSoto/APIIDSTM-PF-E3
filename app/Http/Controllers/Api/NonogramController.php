@@ -17,7 +17,7 @@ class NonogramController extends Controller
      */
     public function index()
     {
-        return new NonogramCollection(Nonogram::paginate());
+        return new NonogramCollection(Nonogram::with('category')->paginate());
     }
 
     /**
