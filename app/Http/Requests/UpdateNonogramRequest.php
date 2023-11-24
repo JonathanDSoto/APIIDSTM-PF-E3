@@ -25,6 +25,7 @@ class UpdateNonogramRequest extends FormRequest
         $slug = $this->nonogram->slug;
         $width = $this['width'] ?? $this->nonogram->width;
         $height = $this['height'] ?? $this->nonogram->height;
+        $colors = $this['colors'] ?? $this->nonogram->colors;
         return [
             'slug' => [ 'sometimes', 'required', 'string', Rule::unique('nonograms')->ignore($slug, 'slug') ],
             'name' => [ 'sometimes', 'required', 'string' ],
@@ -34,7 +35,7 @@ class UpdateNonogramRequest extends FormRequest
             'height' => [ 'sometimes', 'required', 'integer' ],
             'data' => [ 'sometimes', 'required', 'array', filter_var($width, FILTER_VALIDATE_INT) ? 'size:' . $width  : ''],
             'data.*' => [ 'required', 'array', filter_var($height, FILTER_VALIDATE_INT) ? 'size:' . $height : '' ],
-            'data.*.*' => [ 'required', 'integer' ],
+            'data.*.*' => [ 'required', 'integer', 'min:0', 'max:' . (count($colors) - 1) ],
         ];
     }
     

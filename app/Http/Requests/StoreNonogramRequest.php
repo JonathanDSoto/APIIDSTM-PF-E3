@@ -21,6 +21,7 @@ class StoreNonogramRequest extends FormRequest
      */
     public function rules(): array
     {
+        $colors = $this['colors'];
         return [
             'slug' => [ 'required', 'string', 'unique:nonograms' ],
             'name' => [ 'required', 'string' ],
@@ -30,7 +31,7 @@ class StoreNonogramRequest extends FormRequest
             'height' => [ 'required', 'integer' ],
             'data' => [ 'required', 'array', 'size:' . $this['height'] ?? -1 ],
             'data.*' => [ 'required', 'array', 'size:' . $this['width'] ?? -1 ],
-            'data.*.*' => [ 'required', 'integer' ],
+            'data.*.*' => [ 'required', 'integer', 'min:0', is_array($colors) ? 'max:' . (count($colors) - 1) : ''],
         ];
     }
     
