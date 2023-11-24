@@ -40,7 +40,7 @@ class UpdateNonogramRequest extends FormRequest
     
     public function passedValidation()
     {
-        $this['data'] = json_encode($this['data']);
-        $this['colors'] = json_encode($this['colors']);
+        $this['data'] && ($this['data'] = json_encode($this['data']));
+        $this['data'] && ($this['colors'] = json_encode($this['colors']));
     }
 }
