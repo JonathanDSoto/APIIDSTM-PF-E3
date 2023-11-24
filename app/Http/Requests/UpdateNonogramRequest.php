@@ -32,8 +32,8 @@ class UpdateNonogramRequest extends FormRequest
             'colors.*' => [ 'required', 'string', 'regex:/^(rgb\((\s*([0-1]?[0-9]?[0-9]?|2[0-4][0-9]|25[0-5])\,){2}(\s*([0-1]?[0-9]?[0-9]?|2[0-4][0-9]|25[0-5]))\s*\))|(rgba\((\s*([0-1]?[0-9]?[0-9]?|2[0-4][0-9]|25[0-5])\,){3}\s*([0-1]?[0-9]?[0-9]?|2[0-4][0-9]|25[0-5])\s*\))|(#[0-9A-Fa-f]{6})|(#[0-9A-Fa-f]{3})$/' ],
             'width' => [ 'sometimes', 'required', 'integer' ],
             'height' => [ 'sometimes', 'required', 'integer' ],
-            'data' => [ 'sometimes', 'required', 'array', 'size:' . $width ],
-            'data.*' => [ 'required', 'array', 'size:' . $height ],
+            'data' => [ 'sometimes', 'required', 'array', filter_var($width, FILTER_VALIDATE_INT) ? 'size:' . $width  : ''],
+            'data.*' => [ 'required', 'array', filter_var($height, FILTER_VALIDATE_INT) ? 'size:' . $height : '' ],
             'data.*.*' => [ 'required', 'integer' ],
         ];
     }
@@ -41,6 +41,6 @@ class UpdateNonogramRequest extends FormRequest
     public function passedValidation()
     {
         $this['data'] && ($this['data'] = json_encode($this['data']));
-        $this['data'] && ($this['colors'] = json_encode($this['colors']));
+        $this['colors'] && ($this['colors'] = json_encode($this['colors']));
     }
 }

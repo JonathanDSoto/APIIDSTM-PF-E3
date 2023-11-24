@@ -22,4 +22,9 @@ class Nonogram extends Model
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
     }
+
+    protected $casts = [
+        'colors' => 'array',
+        'data' => 'array',
+    ];
 }
