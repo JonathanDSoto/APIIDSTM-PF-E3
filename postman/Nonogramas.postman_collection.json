@@ -95,7 +95,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"slug\": \"airplane-2\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0,0],\r\n        [1,1,1,1,1],\r\n        [1,1,1,1,1],\r\n        [0,0,1,0,0],\r\n        [0,1,1,1,0]\r\n    ],\r\n    \"width\":5,\r\n    \"height\":5\r\n}",
+							"raw": "{\r\n    \"slug\": \"airplane-7\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0,1],\r\n        [1,1,1,1,1],\r\n        [1,1,1,1,1],\r\n        [0,0,1,0,0],\r\n        [0,1,1,1,0]\r\n    ],\r\n    \"width\":5,\r\n    \"height\":5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -116,7 +116,7 @@
 					"response": []
 				},
 				{
-					"name": "Add nonogram Copy",
+					"name": "Update nonogram",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -128,7 +128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0],\r\n        [1,1,1,1],\r\n        [1,1,1,1],\r\n        [0,0,1,0]\r\n    ],\r\n    \"width\":4,\r\n    \"height\":4\r\n}",
+							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"data\":[\r\n        [0,0,1,0],\r\n        [1,1,1,1],\r\n        [1,1,1,1],\r\n        [0,0,1,0]\r\n    ],\r\n    \"width\":4,\r\n    \"height\":4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -136,13 +136,156 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/nonograms/5",
+							"raw": "{{BASE_URL}}/nonograms/6",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"nonograms",
-								"5"
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/categories/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get catetgory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/categories/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"slug\": \"video-games\",\r\n    \"name\": \"Video games\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/categories/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"slug\": \"flowers\",\r\n    \"name\": \"Flores\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/categories/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/categories/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categories",
+								"1"
 							]
 						}
 					},
