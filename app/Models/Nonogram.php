@@ -17,6 +17,7 @@ class Nonogram extends Model
         'colors',
         'width',
         'height',
+        'category_id',
     ];
 
     public function category(): BelongsTo {

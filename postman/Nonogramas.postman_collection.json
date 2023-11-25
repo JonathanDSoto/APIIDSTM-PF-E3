@@ -95,7 +95,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"slug\": \"airplane-7\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0,1],\r\n        [1,1,1,1,1],\r\n        [1,1,1,1,1],\r\n        [0,0,1,0,0],\r\n        [0,1,1,1,0]\r\n    ],\r\n    \"width\":5,\r\n    \"height\":5\r\n}",
+							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0,1],\r\n        [1,1,1,1,1],\r\n        [1,1,1,1,1],\r\n        [0,0,1,0,0],\r\n        [0,1,1,1,0]\r\n    ],\r\n    \"width\":5,\r\n    \"height\":5,\r\n    \"category_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -128,7 +128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"data\":[\r\n        [0,0,1,0],\r\n        [1,1,1,1],\r\n        [1,1,1,1],\r\n        [0,0,1,0]\r\n    ],\r\n    \"width\":4,\r\n    \"height\":4\r\n}",
+							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"data\":[\r\n        [0,0,1,0],\r\n        [1,1,1,1],\r\n        [1,1,1,1],\r\n        [0,0,1,0]\r\n    ],\r\n    \"width\":4,\r\n    \"height\":4,\r\n    \"category_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -136,13 +136,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/nonograms/6",
+							"raw": "{{BASE_URL}}/nonograms/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"nonograms",
-								"6"
+								"1"
 							]
 						}
 					},
