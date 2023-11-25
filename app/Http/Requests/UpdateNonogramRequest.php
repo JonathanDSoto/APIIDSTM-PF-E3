@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class UpdateNonogramRequest extends FormRequest
@@ -26,6 +27,7 @@ class UpdateNonogramRequest extends FormRequest
         $width = $this['width'] ?? $this->nonogram->width;
         $height = $this['height'] ?? $this->nonogram->height;
         $colors = $this['colors'] ?? $this->nonogram->colors;
+        Log::info(is_array($colors));
         return [
             'slug' => [ 'sometimes', 'required', 'string', Rule::unique('nonograms')->ignore($slug, 'slug') ],
             'name' => [ 'sometimes', 'required', 'string' ],
@@ -37,11 +39,5 @@ class UpdateNonogramRequest extends FormRequest
             'data.*' => [ 'required', 'array', filter_var($height, FILTER_VALIDATE_INT) ? 'size:' . $height : '' ],
             'data.*.*' => [ 'required', 'integer', 'min:0', 'max:' . (count($colors) - 1) ],
         ];
-    }
-    
-    public function passedValidation()
-    {
-        $this['data'] && ($this['data'] = json_encode($this['data']));
-        $this['colors'] && ($this['colors'] = json_encode($this['colors']));
     }
 }

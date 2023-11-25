@@ -34,10 +34,4 @@ class StoreNonogramRequest extends FormRequest
             'data.*.*' => [ 'required', 'integer', 'min:0', is_array($colors) ? 'max:' . (count($colors) - 1) : ''],
         ];
     }
-    
-    public function passedValidation()
-    {
-        $this['data'] = json_encode($this['data']);
-        $this['colors'] = json_encode($this['colors']);
-    }
 }
