@@ -15,55 +15,55 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::get('/admin', function () {
     return view('panel.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/categorias', function () {
     return view('panel.categorias.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/etiquetas', function () {
     return view('panel.etiquetas.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/nivelDificultad', function () {
     return view('panel.nivelDificultad.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/tamaños', function () {
     return view('panel.tamaños.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/usuarios', function () {
     return view('panel.usuarios.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/usuarios/{id}', function () {
     return view('panel.usuarios.details');
-});
+})->middleware('auth');
 
 Route::get('/admin/nonogramas', function () {
     return view('panel.nonogramas.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/nonogramas/{id}', function () {
     return view('panel.nonogramas.details');
-});
+})->middleware('auth');
 
 Route::get('/admin/modales', function () {
     return view('panel.modales.index');
-});
+})->middleware('auth');
 
 Route::get('/admin/modales', function () {
     return view('panel.modales.ejemplo');
-});
+})->middleware('auth');
 
 Route::get('/signin', function () {
     return view('app.signin');
-});
+})->name("login");
 
 Route::get('/signup', function () {
     return view('app.signup');
@@ -71,4 +71,4 @@ Route::get('/signup', function () {
 
 Route::get('/forgetpassword', function () {
     return view('app.forgetpassword');
-});
+})->middleware('auth');
