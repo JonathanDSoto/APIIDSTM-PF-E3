@@ -1,0 +1,18 @@
+[
+    {
+        "first_name": "John",
+        "last_name": "Doe",
+        "username": "prueba",
+        "password": "password",
+        "email": "prueba@gmail.com",
+        "date_of_birth": "2002-01-01"
+    },
+    {
+        "first_name": "Christian",
+        "last_name": "Duarte",
+        "username": "TomTobby",
+        "password": "password",
+        "email": "w.christian.duarte@gmail.com",
+        "date_of_birth": "2002-12-31"
+    }
+]
