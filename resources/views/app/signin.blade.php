@@ -33,7 +33,7 @@
         <div class="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
           <div class="auth-box h-full flex flex-col justify-center">
             <div class="mobile-logo text-center mb-6 lg:hidden block">
-              <a href="index.html">
+              <a href="/admin">
                 <img src="{{ asset("assets/images/logo/logo.svg") }}" alt="" class="mb-10 dark_logo">
                 <img src="{{ asset("assets/images/logo/logo-white.svg") }}" alt="" class="mb-10 white_logo">
               </a>
@@ -45,11 +45,12 @@
               </div>
             </div>
             <!-- BEGIN: Login Form -->
-            <form class="space-y-4" action='index.html'>
+            <form class="space-y-4" action='' method="post">
+                @csrf
               <div class="fromGroup">
-                <label class="block capitalize form-label">Email</label>
+                <label class="block capitalize form-label">Nombre de usuario</label>
                 <div class="relative ">
-                  <input type="email" name="email" class="form-control py-2" placeholder="email@ejemplo.com" >
+                  <input type="text" name="username"  class="form-control py-2" placeholder="Nombre de usuario" >
                 </div>
               </div>
               <div class="fromGroup">

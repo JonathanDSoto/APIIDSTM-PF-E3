@@ -6,7 +6,7 @@
               <div class="mb-5">
                 <ul class="m-0 p-0 list-none">
                   <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                    <a href="index.html">
+                    <a href="/admin">
                       <iconify-icon icon="heroicons-outline:home"></iconify-icon>
                       <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
                     </a>
@@ -24,6 +24,7 @@
                   <header class=" card-header noborder">
                     <h4 class="card-title">Nivel de dificultad
                     </h4>
+                    <button class="btn inline-flex justify-center btn-success">Añadir nivel de dificultad</button>
                   </header>
                   <div class="card-body px-6 pb-6">
                     <div class="overflow-x-auto -mx-6 dashcode-data-table">
@@ -96,14 +97,14 @@
                   </div>
                 </div>
               </div>
-              <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal_editar" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="modal_editar" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
     <div class="modal-dialog top-1/2 !-translate-y-1/2 relative w-auto pointer-events-none">
         <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
             <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-5 rounded-t dark:border-slate-600 bg-primary-500">
                     <h3 class="text-xl font-medium text-white dark:text-white capitalize">
-                        Editar nonograma
+                        Editar Nivel de dificultas
                     </h3>
                     <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -118,46 +119,6 @@
                         <label for="name" class="form-label">Nombre*</label>
                         <input required id="name" type="text" class="form-control" placeholder="Nombre">
                     </div>
-                    <div class="input-area">
-                        <label for="sizes_select" class="form-label">Tamaño*</label>
-                        <select required id="sizes_select" class="form-control">
-                            <option value="size1" class="dark:bg-slate-700">Tamaño 1</option>
-                            <option value="size2" class="dark:bg-slate-700">Tamaño 2</option>
-                            <option value="size3" class="dark:bg-slate-700">Tamaño 3</option>
-                            <option value="size4" class="dark:bg-slate-700">Tamaño 4</option>
-                        </select>
-                    </div>
-                    <div class="input-area">
-                        <label for="category_select" class="form-label">Categoría*</label>
-                        <select required id="category_select" class="form-control">
-                            <option value="category1" class="dark:bg-slate-700">Categoría 1</option>
-                            <option value="category2" class="dark:bg-slate-700">Categoría 2</option>
-                            <option value="category3" class="dark:bg-slate-700">Categoría 3</option>
-                            <option value="category4" class="dark:bg-slate-700">Categoría 4</option>
-                        </select>
-                    </div>
-                    <div class="input-area">
-                        <label for="difficulty_select" class="form-label">Dificultad*</label>
-                        <select required id="difficulty_select" class="form-control">
-                            <option value="difficulty1" class="dark:bg-slate-700">Dificultad 1</option>
-                            <option value="difficulty2" class="dark:bg-slate-700">Dificultad 2</option>
-                            <option value="difficulty3" class="dark:bg-slate-700">Dificultad 3</option>
-                            <option value="difficulty4" class="dark:bg-slate-700">Dificultad 4</option>
-                        </select>
-                    </div>
-                    <div>
-                      <label for="tags_select" class="form-label">Etiquetas</label>
-                      <select name="tags_select" id="tags_select" class="select2 form-control w-full mt-2 py-2" multiple="multiple">
-                        <option selected="selected" value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 1</option>
-                        <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 2</option>
-                        <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 3</option>
-                      </select>
-                    </div>
-                    <script>
-                        window.addEventListener('load', () => {
-                            $('#tags_select').select2()
-                        })
-                    </script>
                 </div>
                 <!-- Modal footer -->
                 <div class="flex justify-between items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">

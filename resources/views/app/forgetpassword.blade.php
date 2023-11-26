@@ -28,7 +28,7 @@
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
-          <a href="index.html">
+          <a href="/admin">
             <img src="{{ asset("assets/images/logo/logo-c-white.svg") }}" alt="" class="mb-10 dark_logo">
             <img src="{{ asset("assets/images/logo/logo-white.svg") }}" alt="" class="mb-10 white_logo">
           </a>
@@ -44,7 +44,7 @@
         <div class="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
           <div class="auth-box2 flex flex-col justify-center h-full">
             <div class="mobile-logo text-center mb-6 lg:hidden block">
-              <a href="index.html">
+              <a href="/admin">
                 <img src="{{ asset("assets/images/logo/logo.svg") }}" alt="" class="mx-auto">
                 <img src="{{ asset("assets/images/logo/logo-white.svg") }}" alt="" class="mx-auto">
               </a>
@@ -60,7 +60,7 @@
               ¡Ingrese su correo electrónico y se le enviarán las instrucciones!
             </div>
             <!-- BEGIN: Forgot Password Form -->
-            <form class="space-y-4" action='index.html'>
+            <form class="space-y-4" action='/admin'>
               <div class="fromGroup">
                 <label class="block capitalize form-label">Email</label>
                 <div class="relative ">
@@ -73,7 +73,7 @@
 
             <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 2xl:mt-12 mt-8 uppercase text-sm">
             OLVÍDALO,
-              <a href="index.html" class="text-slate-900 dark:text-white font-medium hover:underline">
+              <a href="/admin" class="text-slate-900 dark:text-white font-medium hover:underline">
                ENVÍAME DE VUELTA
               </a>
               AL INICIO DE SESIÓN

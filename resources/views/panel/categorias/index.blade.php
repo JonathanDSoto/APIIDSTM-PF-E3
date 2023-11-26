@@ -6,7 +6,7 @@
               <div class="mb-5">
                 <ul class="m-0 p-0 list-none">
                   <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                    <a href="index.html">
+                    <a href="/panel/index.blade.php>
                       <iconify-icon icon="heroicons-outline:home"></iconify-icon>
                       <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
                     </a>
@@ -14,7 +14,9 @@
                   <li class="inline-block relative text-sm text-primary-500 font-Inter ">
                     Categorias
                   </li>
+
                 </ul>
+
               </div>
               <!-- END: BreadCrumb -->
 
@@ -24,6 +26,7 @@
                   <header class=" card-header noborder">
                     <h4 class="card-title">Categorias
                     </h4>
+                    <button class="btn inline-flex justify-center btn-success">Añadir categoria</button>
                   </header>
                   <div class="card-body px-6 pb-6">
                     <div class="overflow-x-auto -mx-6 dashcode-data-table">

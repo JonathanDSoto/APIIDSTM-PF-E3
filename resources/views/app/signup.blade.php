@@ -33,7 +33,7 @@
         <div class="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
           <div class="auth-box h-full flex flex-col justify-center">
             <div class="mobile-logo text-center mb-6 lg:hidden block">
-              <a href="index.html">
+              <a href="/admin">
                 <img src="{{ asset("assets/images/logo/logo.svg") }}" alt="" class="mb-10 dark_logo">
                 <img src="{{ asset("assets/images/logo/logo-white.svg") }}" alt="" class="mb-10 white_logo">
               </a>

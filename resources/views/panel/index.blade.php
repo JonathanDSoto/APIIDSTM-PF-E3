@@ -1,34 +1,8 @@
 @extends("layouts.app")
 @section("content")
-<!DOCTYPE html>
-<!-- Template Name: DashCode - HTML, React, Vue, Tailwind Admin Dashboard Template Author: Codeshaper Website: https://codeshaper.net Contact: support@codeshaperbd.net Like: https://www.facebook.com/Codeshaperbd Purchase: https://themeforest.net/item/dashcode-admin-dashboard-template/42600453 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project. -->
-<html lang="zxx" dir="ltr" class="light">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<title>Dashcode - HTML Template</title>
-<link rel="icon" type="image/png" href="{{ asset("assets/images/logo/favicon.svg") }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<!-- BEGIN: Theme CSS-->
-<link rel="stylesheet" href="{{ asset("assets/css/rt-plugins.css") }}">
-<link rel="stylesheet" href="{{ asset("assets/css/app.css") }}">
-<!-- End : Theme CSS -->
 
-<!-- Start : theme-store js -->
-<script src="{{ asset("assets/js/store.js") }}" sync></script>
-<!-- End : theme-store js -->
-</head>
 
-<body class=" font-inter dashcode-app" id="body_class">
-<!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
-<main class="app-wrapper">
-    <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]" id="content_wrapper">
-        <div class="page-content">
-            <div id="content_layout">
                 <div>
                     <div class="flex justify-between flex-wrap items-center mb-6">
                         <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Dashboard</h4>
@@ -48,23 +22,8 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-12 gap-5 mb-5">
-                        <div class="2xl:col-span-3 lg:col-span-4 col-span-12">
-                            <div class="bg-no-repeat bg-cover bg-center p-4 rounded-[6px] relative" style="background-image: url(assets/images/all-img/widget-bg-1.png)">
-                                <div class="max-w-[180px]">
-                                    <div class="text-xl font-medium text-slate-900 mb-2">
-                                    Upgrade your Dashcode
-                                    </div>
-                                    <p class="text-sm text-slate-800">
-                                    Pro plan for better results
-                                    </p>
-                                </div>
-                                <div class="absolute top-1/2 -translate-y-1/2 ltr:right-6 rtl:left-6 mt-2 h-12 w-12 bg-white rounded-full text-xs font-medium
-                                        flex flex-col items-center justify-center">
-                                    Now
-                                </div>
-                            </div>
-                        </div>
-                        <div class="2xl:col-span-9 lg:col-span-8 col-span-12">
+
+                        <div class=" col-span-12">
                             <div class="p-4 card">
                                 <div class="grid md:grid-cols-3 col-span-1 gap-4">
                                     <!-- BEGIN: Group Chart2 -->
@@ -113,10 +72,13 @@
                                             </div>
                                         </div>
                                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+
+
+
     <div class="grid grid-cols-12 gap-5">
         <div class="lg:col-span-8 col-span-12">
             <div class="card">
@@ -907,12 +869,4 @@
         </div>
         </div>
     </div>
-</main>
-  <!-- scripts -->
-
-  <script src=""{{ asset("assets/js/jquery-3.6.0.min.js") }}"></script>
-  <script src=""{{ asset("assets/js/rt-plugins.js") }}"></script>
-  <script src=""{{ asset("assets/js/app.js") }}"></script>
-</body>
-</html>
 @endsection
