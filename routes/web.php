@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,6 +69,11 @@ Route::get('/signin', function () {
 Route::get('/signup', function () {
     return view('app.signup');
 });
+
+Route::post('/signin', [ AuthController::class, 'signin' ]);
+
+Route::post('/signup', [ AuthController::class, 'signup' ]);
+Route::get('/logout', [ AuthController::class, 'logout' ]);
 
 Route::get('/forgot-password', function () {
     return view('app.forgetpassword');

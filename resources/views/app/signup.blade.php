@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
   <link rel="stylesheet" href="{{ asset("assets/css/app.css") }}">
   <script src="{{ asset("assets/js/store.js") }}"></script>
-
   <script>
       window.addEventListener('load', ()=>{
         $("#date_of_birth").flatpickr({
