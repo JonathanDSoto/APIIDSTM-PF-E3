@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+    return redirect('/admin');
+});
 
 Route::get('/admin', function () {
     return view('panel.index');
@@ -69,6 +69,6 @@ Route::get('/signup', function () {
     return view('app.signup');
 });
 
-Route::get('/forgetpassword', function () {
+Route::get('/forgot-password', function () {
     return view('app.forgetpassword');
-})->middleware('auth');
+});

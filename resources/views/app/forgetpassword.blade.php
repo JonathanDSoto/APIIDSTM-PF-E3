@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <title>Dashcode - HTML Template</title>
+  <title>NonoGrams Pro - Restablecer contreseña</title>
   <link rel="icon" type="image/png" href="{{ asset("assets/images/logo/favicon.svg") }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
           <a href="/admin">
             <img src="{{ asset("assets/images/logo/logo-c-white.svg") }}" alt="" class="mb-10 dark_logo">
-            <img src="{{ asset("assets/images/logo/logo-white.svg") }}" alt="" class="mb-10 white_logo">
+
           </a>
           <h4>
             Tomate un tiempo de
@@ -71,9 +71,9 @@
             </form>
             <!-- END: Forgot Password Form -->
 
-            <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 2xl:mt-12 mt-8 uppercase text-sm">
+            <div class="md:max-w-[345px] mx-auto text-center font-normal text-slate-500 dark:text-slate-400 2xl:mt-12 mt-8 uppercase text-sm">
             OLVÍDALO,
-              <a href="/admin" class="text-slate-900 dark:text-white font-medium hover:underline">
+              <a href="/signin" class="text-slate-900 dark:text-white font-medium hover:underline">
                ENVÍAME DE VUELTA
               </a>
               AL INICIO DE SESIÓN
