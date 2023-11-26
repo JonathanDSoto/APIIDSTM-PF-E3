@@ -73,6 +73,7 @@ Route::get('/signup', function () {
 Route::post('/signin', [ AuthController::class, 'signin' ]);
 
 Route::post('/signup', [ AuthController::class, 'signup' ]);
+Route::get('/logout', [ AuthController::class, 'logout' ]);
 
 Route::get('/forgetpassword', function () {
     return view('app.forgetpassword');
