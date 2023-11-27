@@ -46,13 +46,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/nonograms/1",
+							"raw": "{{BASE_URL}}/nonograms/6",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"nonograms",
-								"1"
+								"6"
 							]
 						}
 					},
@@ -165,13 +165,19 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/categories/",
+							"raw": "{{BASE_URL}}/categories/?page=1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"categories",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -285,6 +291,149 @@
 							],
 							"path": [
 								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "List tags",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/tags/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get tag",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/tags/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tags",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add tag",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\": \"lch(71.66% 42.38 0)\",\r\n    \"name\": \"hard-as-fuck\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/tags/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update tag",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\": \"lch(71.66% 42.38 269.73)\",\r\n    \"name\": \"hard-as-fuck\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/tags/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tags",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete tag",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/tags/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tags",
 								"1"
 							]
 						}
