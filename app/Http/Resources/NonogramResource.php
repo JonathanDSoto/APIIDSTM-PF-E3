@@ -30,6 +30,7 @@ class NonogramResource extends JsonResource
             'colors' => $this->colors,
             'data' => $this->data,
             ($this->include_category ? 'category' : 'category_id') => $this->include_category ? new CategoryResource($this->category) : $this->category_id,
+            'tags' => $this->tags,
             //'created_at' => $this->created_at,
             //'updated_at' => $this->updated_at,
         ];
