@@ -14,8 +14,8 @@ class NonogramSeeder extends Seeder
     {
         $content = json_decode(file_get_contents('database/data/nonograms.json'), true);
         foreach ($content as $user) {
-            $user['data'] = json_encode($user['data']);
-            $user['colors'] = json_encode($user['colors']);
+            $user['data'] = $user['data'];
+            $user['colors'] = $user['colors'];
             Nonogram::create($user);
         }
     }
