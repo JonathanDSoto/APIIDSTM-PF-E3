@@ -3,7 +3,7 @@ import NonoBreadcrums from '../components/NonoBreadcrums.vue';
 import CategoriesModal from '../components/categories/CategoriesModal.vue';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
-import { getCategories, getCategory } from '../api/categories';
+import { getCategories, getCategory, updateCategory, addCategory } from '../api/categories';
 import {ref} from "vue"
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
@@ -65,6 +65,22 @@ const DataTableajax = (data, callback) => {
 }
 const nombremodal = ref()
 const modal = ref()
+const datatable = ref()
+const guardarCategoria = (e) => {
+    if (e.id) {
+        updateCategory(e.id, e).then(() => {
+            modal.value.closemodal()
+            datatable.value.dt.ajax.reload()
+        })
+
+    }else{
+        addCategory(e).then(() => {
+            modal.value.closemodal()
+            datatable.value.dt.ajax.reload()
+        })
+    }
+
+}
 const agregarcategoria = () => {
     nombremodal.value = "Agregar categoria"
     modal.value.cargarCategoria()
@@ -94,7 +110,7 @@ window.editarcategoria = editarcategoria;
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden ">
                             <DataTable class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700"
-                            :ajax="DataTableajax" :options="DataTableoptions" :columns="DataTabledata" >
+                            ref="datatable" :ajax="DataTableajax" :options="DataTableoptions" :columns="DataTabledata" >
                             <thead class="border-t border-slate-100 dark:border-slate-800">
 
                                 <tr>
@@ -123,7 +139,7 @@ window.editarcategoria = editarcategoria;
         </div>
     </div>
 </div>
-<CategoriesModal :titulo="nombremodal" ref="modal">
+<CategoriesModal :titulo="nombremodal" ref="modal" @guardar="guardarCategoria">
 
 </CategoriesModal>
 </template>

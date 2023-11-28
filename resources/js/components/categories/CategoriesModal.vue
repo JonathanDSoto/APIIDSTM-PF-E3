@@ -1,17 +1,32 @@
 <script setup>
 import { ref } from 'vue';
-
+const emits = defineEmits(["guardar"])
 const props=defineProps({
     titulo: String
 })
 const nombreCategoria = ref("")
 const slugCategoria = ref("")
+const idCategoria = ref()
+
+const closemodal = () => {
+    $("#categoriesmodal").modal("hide")
+
+
+}
+const guardarCategoria = () => {
+    emits("guardar", {
+        name: nombreCategoria.value,
+        slug: slugCategoria.value,
+        id: idCategoria.value
+    })
+}
 const cargarCategoria = (data) => {
     nombreCategoria.value = data?.name;
     slugCategoria.value = data?.slug;
+    idCategoria.value = data?.id;
 }
 
-defineExpose({cargarCategoria})
+defineExpose({cargarCategoria, closemodal})
 </script>
 <template>
     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="categoriesmodal" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
@@ -34,7 +49,7 @@ defineExpose({cargarCategoria})
                     <div class="p-6 space-y-4">
                         <div class="input-area">
                             <label for="slug" class="form-label">Slug*</label>
-                            <input v-model="slugCategoria" required id="slug" type="text" class="form-control" placeholder="Nombre">
+                            <input v-model="slugCategoria" required id="slug" type="text" class="form-control" placeholder="Slug">
                         </div>
                         <div class="input-area">
                             <label for="name" class="form-label">Nombre*</label>
@@ -44,7 +59,7 @@ defineExpose({cargarCategoria})
                     <!-- Modal footer -->
                     <div class="flex justify-between items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
                         <button data-bs-dismiss="modal" class="btn inline-flex justify-center btn-danger">Cancelar</button>
-                        <button data-bs-dismiss="modal" class="btn inline-flex justify-center btn-success">Guardar</button>
+                        <button @click="guardarCategoria" class="btn inline-flex justify-center btn-success">Guardar</button>
                     </div>
                 </div>
             </div>
