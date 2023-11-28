@@ -3,7 +3,7 @@ import NonoBreadcrums from '../components/NonoBreadcrums.vue';
 import CategoriesModal from '../components/categories/CategoriesModal.vue';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
-import { getCategories } from '../api/categories';
+import { getCategories, getCategory } from '../api/categories';
 import {ref} from "vue"
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
@@ -31,7 +31,7 @@ const DataTabledata = [
                 </button>
                 <ul class=" dropdown-menu min-w-[120px] absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
                     <li>
-                        <button data-bs-toggle="modal" data-bs-target="#categoriesmodal" class=" hover:bg-slate-900 hover:text-white dark:hover:bg-slate-600 dark:hover:bg-opacity-50 w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer flex space-x-2 items-center rtl:space-x-reverse " onclick = "editarcategoria()">
+                        <button data-bs-toggle="modal" data-bs-target="#categoriesmodal" class=" hover:bg-slate-900 hover:text-white dark:hover:bg-slate-600 dark:hover:bg-opacity-50 w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer flex space-x-2 items-center rtl:space-x-reverse " onclick = "editarcategoria(${data.id})">
                             <span class="text-base">
                                 <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                             </span>
@@ -64,12 +64,14 @@ const DataTableajax = (data, callback) => {
     })
 }
 const nombremodal = ref()
+const modal = ref()
 const agregarcategoria = () => {
     nombremodal.value = "Agregar categoria"
+    modal.value.cargarCategoria()
 }
 const editarcategoria = (id) => {
 nombremodal.value = "Editar categoria"
-
+getCategory(id).then(modal.value.cargarCategoria)
 }
 window.editarcategoria = editarcategoria;
 
@@ -121,7 +123,7 @@ window.editarcategoria = editarcategoria;
         </div>
     </div>
 </div>
-<CategoriesModal :titulo="nombremodal">
+<CategoriesModal :titulo="nombremodal" ref="modal">
 
 </CategoriesModal>
 </template>

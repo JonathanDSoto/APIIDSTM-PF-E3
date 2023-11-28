@@ -1,7 +1,17 @@
 <script setup>
+import { ref } from 'vue';
+
 const props=defineProps({
     titulo: String
 })
+const nombreCategoria = ref("")
+const slugCategoria = ref("")
+const cargarCategoria = (data) => {
+    nombreCategoria.value = data?.name;
+    slugCategoria.value = data?.slug;
+}
+
+defineExpose({cargarCategoria})
 </script>
 <template>
     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="categoriesmodal" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
@@ -23,8 +33,12 @@ const props=defineProps({
                     <!-- Modal body -->
                     <div class="p-6 space-y-4">
                         <div class="input-area">
+                            <label for="slug" class="form-label">Slug*</label>
+                            <input v-model="slugCategoria" required id="slug" type="text" class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="input-area">
                             <label for="name" class="form-label">Nombre*</label>
-                            <input required id="name" type="text" class="form-control" placeholder="Nombre">
+                            <input v-model="nombreCategoria" required id="name" type="text" class="form-control" placeholder="Nombre">
                         </div>
                     </div>
                     <!-- Modal footer -->
