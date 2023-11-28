@@ -46,13 +46,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/nonograms/6",
+							"raw": "{{BASE_URL}}/nonograms/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"nonograms",
-								"6"
+								"1"
 							]
 						}
 					},
@@ -95,7 +95,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0,1],\r\n        [1,1,1,1,1],\r\n        [1,1,1,1,1],\r\n        [0,0,1,0,0],\r\n        [0,1,1,1,0]\r\n    ],\r\n    \"width\":5,\r\n    \"height\":5,\r\n    \"category_id\": 1\r\n}",
+							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0,1],\r\n        [1,1,1,1,1],\r\n        [1,1,1,1,1],\r\n        [0,0,1,0,0],\r\n        [0,1,1,1,0]\r\n    ],\r\n    \"width\":5,\r\n    \"height\":5,\r\n    \"category_id\": 1,\r\n    \"difficulty_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -128,7 +128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"data\":[\r\n        [0,0,1,0],\r\n        [1,1,1,1],\r\n        [1,1,1,1],\r\n        [0,0,1,0]\r\n    ],\r\n    \"width\":4,\r\n    \"height\":4,\r\n    \"category_id\": 1\r\n}",
+							"raw": "{\r\n    \"slug\": \"airplane\",\r\n    \"name\": \"Airplane\",\r\n    \"colors\":[\r\n        \"#fff\",\r\n        \"rgb(0, 0, 0)\"\r\n    ],\r\n    \"data\":[\r\n        [0,0,1,0],\r\n        [1,1,1,1],\r\n        [1,1,1,1],\r\n        [0,0,1,0]\r\n    ],\r\n    \"width\":4,\r\n    \"height\":4,\r\n    \"category_id\": 1,\r\n    \"difficulty_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -434,6 +434,149 @@
 							],
 							"path": [
 								"tags",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Difficulties",
+			"item": [
+				{
+					"name": "List difficulties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/difficulties/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"difficulties",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get difficulty",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/difficulties/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"difficulties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add difficulty",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"slug\": \"hard-as-fuck\",\r\n    \"name\": \"HARD AS FUCK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/difficulties/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"difficulties",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update difficulty",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"slug\": \"hard-as-fuuuuck\",\r\n    \"name\": \"HARD AS FUUUUCK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/difficulties/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"difficulties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete difficulty",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/difficulties/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"difficulties",
 								"1"
 							]
 						}

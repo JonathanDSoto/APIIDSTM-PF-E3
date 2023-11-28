@@ -35,6 +35,7 @@ class StoreNonogramRequest extends FormRequest
             'data.*' => [ 'required', 'array', 'size:' . $width ],
             'data.*.*' => [ 'required', 'integer', 'min:0', is_array($colors) ? 'max:' . (count($colors) - 1) : ''],
             'category_id' => [ 'sometimes', 'required', 'exists:categories,id' ],
+            'difficulty_id' => [ 'sometimes', 'required', 'exists:difficulties,id' ],
         ];
     }
 }

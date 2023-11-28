@@ -25,7 +25,7 @@ class NonogramController extends Controller
      */
     public function store(StoreNonogramRequest $request)
     {
-        $nonogram = Nonogram::create($request->all());
+        $nonogram = Nonogram::create($request->validated());
         return new NonogramResource($nonogram);
     }
 
@@ -42,7 +42,7 @@ class NonogramController extends Controller
      */
     public function update(UpdateNonogramRequest $request, Nonogram $nonogram)
     {
-        if($nonogram->update($request->all())){
+        if($nonogram->update($request->validated())){
             return new NonogramResource($nonogram);
         }
         return response()->setStatusCode(404);

@@ -7,11 +7,11 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class NonogramResource extends JsonResource
 {
-    protected bool $include_category;
+    protected bool $include_relations;
 
-    public function __construct($res, $include_category = false) {
+    public function __construct($res, $include_relations = false) {
         parent::__construct($res);
-        $this->include_category = $include_category;
+        $this->include_relations = $include_relations;
     }
 
     /**
@@ -29,7 +29,8 @@ class NonogramResource extends JsonResource
             'height' => $this->height,
             'colors' => $this->colors,
             'data' => $this->data,
-            ($this->include_category ? 'category' : 'category_id') => $this->include_category ? new CategoryResource($this->category) : $this->category_id,
+            ($this->include_relations ? 'category' : 'category_id') => $this->include_relations ? new CategoryResource($this->category) : $this->category_id,
+            ($this->include_relations ? 'difficulty' : 'difficulty_id') => $this->include_relations ? new DifficultyResource($this->difficulty) : $this->difficulty_id,
             'tags' => $this->tags,
             //'created_at' => $this->created_at,
             //'updated_at' => $this->updated_at,

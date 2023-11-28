@@ -39,6 +39,7 @@ class UpdateNonogramRequest extends FormRequest
             'data.*' => [ 'required', 'array', filter_var($height, FILTER_VALIDATE_INT) ? 'size:' . $height : '' ],
             'data.*.*' => [ 'required', 'integer', 'min:0', 'max:' . (count($colors) - 1) ],
             'category_id' => [ 'sometimes', 'required', 'exists:categories,id' ],
+            'difficulty_id' => [ 'sometimes', 'required', 'exists:difficulties,id' ],
         ];
     }
 }

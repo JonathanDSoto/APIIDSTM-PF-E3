@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateCategoryRequest extends FormRequest
+class StoreDifficultyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +21,9 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $slug = $this->category->slug;
         return [
-            'slug' => [ 'sometimes', 'required', 'string', Rule::unique('categories')->ignore($slug, 'slug') ],
-            'name' => [ 'sometimes', 'required', 'string' ]
+            'slug' => [ 'required', 'string', 'unique:difficulties' ],
+            'name' => [ 'required', 'string' ],
         ];
     }
 }

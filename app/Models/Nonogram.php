@@ -20,10 +20,15 @@ class Nonogram extends Model
         'width',
         'height',
         'category_id',
+        'difficulty_id',
     ];
 
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
+    }
+
+    public function difficulty(): BelongsTo {
+        return $this->belongsTo(Difficulty::class);
     }
 
     public function tags(): BelongsToMany {
