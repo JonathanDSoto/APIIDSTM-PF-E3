@@ -1,4 +1,7 @@
 <script setup>
+const props=defineProps({
+    titulo: String
+})
 </script>
 <template>
     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="categoriesmodal" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
@@ -8,7 +11,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-5 rounded-t dark:border-slate-600 bg-primary-500">
                         <h3 class="text-xl font-medium text-white dark:text-white capitalize">
-                            Editar Categoria
+                            {{ props.titulo }}
                         </h3>
                         <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal">
                             <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
