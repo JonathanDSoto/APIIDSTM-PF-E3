@@ -22,13 +22,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/nonograms/",
+							"raw": "{{BASE_URL}}/nonograms/?page=1&amount=10",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"nonograms",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "amount",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -165,7 +175,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/categories/?page=1",
+							"raw": "{{BASE_URL}}/categories/?page=1&amount=10",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -177,6 +187,10 @@
 								{
 									"key": "page",
 									"value": "1"
+								},
+								{
+									"key": "amount",
+									"value": "10"
 								}
 							]
 						}
@@ -314,13 +328,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/tags/",
+							"raw": "{{BASE_URL}}/tags/?amount=10&page=1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"tags",
 								""
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -457,13 +481,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE_URL}}/difficulties/",
+							"raw": "{{BASE_URL}}/difficulties/?page=1&amount=1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"difficulties",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
 							]
 						}
 					},

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Nonogram;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaginationRequest;
 use App\Http\Requests\StoreNonogramRequest;
 use App\Http\Requests\UpdateNonogramRequest;
 use App\Http\Resources\NonogramCollection;
@@ -15,9 +16,9 @@ class NonogramController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(PaginationRequest $request)
     {
-        return new NonogramCollection(Nonogram::with('category')->paginate());
+        return new NonogramCollection(Nonogram::with('category')->paginate($request->amount));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaginationRequest;
 use App\Models\Difficulty;
 use App\Http\Requests\StoreDifficultyRequest;
 use App\Http\Requests\UpdateDifficultyRequest;
@@ -11,9 +12,9 @@ use App\Http\Resources\DifficultyResource;
 
 class DifficultyController extends Controller
 {
-    public function index()
+    public function index(PaginationRequest $request)
     {
-        return new DifficultyCollection(Difficulty::paginate());
+        return new DifficultyCollection(Difficulty::paginate($request->amount));
     }
 
     public function store(StoreDifficultyRequest $request)
