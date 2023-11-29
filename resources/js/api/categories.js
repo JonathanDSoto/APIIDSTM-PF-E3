@@ -1,9 +1,9 @@
 import axios from "./base"
-export const getCategories = async (page=1, ammount = 10) => {
+export const getCategories = async (page=1, amount = 10) => {
     const respuesta = await axios.get("categories",{
         params:{
             page,
-            ammount
+            amount
         }
     })
     return respuesta.data;
