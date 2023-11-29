@@ -9,6 +9,7 @@ import Swal from "sweetalert2"
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
     serverSide: true,
+    searching: false,
     createdRow: (e) => {
         e.getElementsByTagName('td').forEach(e => e.classList.add('table-td'))
     },
@@ -69,22 +70,56 @@ const modal = ref()
 const datatable = ref()
 const guardarCategoria = (e) => {
     if (e.id) {
+        Swal.showLoading()
         updateCategory(e.id, e).then(() => {
+            Swal.fire({
+                icon: 'success',
+                onBeforeOpen () {
+                    Swal.hideLoading()
+                },
+                title: 'Se ha actualizado la categoria exitosamente',
+            })
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
         }).catch((e)=> {
             if (e.response?.status == 422){
                 modal.value.validacionerrores = e.response.data.errors
+                Swal.close()
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    onBeforeOpen () {
+                        Swal.hideLoading()
+                    },
+                    title: 'Ocurrio un error del lado del servidor, intente nuevamente mas tarde',
+                })
             }
         })
 
     }else{
+        Swal.showLoading()
         addCategory(e).then(() => {
+            Swal.fire({
+                icon: 'success',
+                onBeforeOpen () {
+                    Swal.hideLoading()
+                },
+                title: 'Se ha agregado la categoria exitosamente',
+            })
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
         }).catch((e)=> {
             if (e.response?.status == 422){
+                Swal.close()
                 modal.value.validacionerrores = e.response.data.errors
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    onBeforeOpen () {
+                        Swal.hideLoading()
+                    },
+                    title: 'Ocurrio un error del lado del servidor, intente nuevamente mas tarde',
+                })
             }
         })
     }
