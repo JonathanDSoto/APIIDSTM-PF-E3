@@ -7,6 +7,7 @@ const props=defineProps({
 const nombreCategoria = ref("")
 const slugCategoria = ref("")
 const idCategoria = ref()
+const validacionerrores = ref(null)
 
 const closemodal = () => {
     $("#categoriesmodal").modal("hide")
@@ -24,9 +25,10 @@ const cargarCategoria = (data) => {
     nombreCategoria.value = data?.name;
     slugCategoria.value = data?.slug;
     idCategoria.value = data?.id;
+    validacionerrores.value = null;
 }
 
-defineExpose({cargarCategoria, closemodal})
+defineExpose({cargarCategoria, closemodal, validacionerrores})
 </script>
 <template>
     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="categoriesmodal" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
@@ -50,10 +52,12 @@ defineExpose({cargarCategoria, closemodal})
                         <div class="input-area">
                             <label for="slug" class="form-label">Slug*</label>
                             <input v-model="slugCategoria" required id="slug" type="text" class="form-control" placeholder="Slug">
+                            <span v-if="validacionerrores && validacionerrores.slug" v-for="message in validacionerrores.slug" class="font-Inter block text-sm text-danger-500 pt-2">{{ message }}</span>
                         </div>
                         <div class="input-area">
                             <label for="name" class="form-label">Nombre*</label>
                             <input v-model="nombreCategoria" required id="name" type="text" class="form-control" placeholder="Nombre">
+                            <span v-if="validacionerrores && validacionerrores.name" v-for="message in validacionerrores.name" class="font-Inter block text-sm text-danger-500 pt-2">{{ message }}</span>
                         </div>
                     </div>
                     <!-- Modal footer -->
