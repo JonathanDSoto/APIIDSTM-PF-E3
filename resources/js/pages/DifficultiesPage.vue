@@ -4,7 +4,8 @@ import DifficultiesModal from '../components/difficulties/DifficultiesModal.vue'
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
 import { getDifficulties, getDifficulty, updateDifficulty, addDifficulty, deleteDifficulty } from '../api/difficulties';
-import {ref} from "vue"
+import { ref } from "vue"
+import Swal from "sweetalert2"
 
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
@@ -22,9 +23,10 @@ const DataTableoptions = {
     },
 }
 const DataTabledata = [
-{data:"id"},{data:"name"},
-{data: null,render: function ( data, type, row, meta ) {
-    return `<div>
+    { data: "id" }, { data: "name" },
+    {
+        data: null, render: function (data, type, row, meta) {
+            return `<div>
         <div class="relative">
             <div class="dropdown relative">
                 <button class="text-xl text-center block w-full " type="button" id="invoiceDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,14 +53,15 @@ const DataTabledata = [
             </div>
         </div>
     </div>`
-}}
+        }
+    }
 
 ]
 const DataTableajax = (data, callback) => {
-    getDifficulties(parseInt(data.start/data.length)+1 , data.length).then((difficulties) => {
+    getDifficulties(parseInt(data.start / data.length) + 1, data.length).then((difficulties) => {
         callback({
             draw: data.draw,
-            data:difficulties.data,
+            data: difficulties.data,
             recordsTotal: difficulties.meta.total,
             recordsFiltered: difficulties.meta.total,
         })
@@ -72,18 +75,18 @@ const guardarDificultad = (e) => {
         updateDifficulty(e.id, e).then(() => {
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
-        }).catch((e)=> {
-            if (e.response?.status == 422){
+        }).catch((e) => {
+            if (e.response?.status == 422) {
                 modal.value.validacionerrores = e.response.data.errors
             }
         })
 
-    }else{
+    } else {
         addDifficulty(e).then(() => {
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
-        }).catch((e)=> {
-            if (e.response?.status == 422){
+        }).catch((e) => {
+            if (e.response?.status == 422) {
                 modal.value.validacionerrores = e.response.data.errors
             }
         })
@@ -95,15 +98,35 @@ const agregardificultad = () => {
     modal.value.cargarDificultad()
 }
 const editardificultad = (id) => {
-nombremodal.value = "Editar dificultad"
-getDifficulty(id).then(modal.value.cargarDificultad)
+    nombremodal.value = "Editar dificultad"
+    getDifficulty(id).then(modal.value.cargarDificultad)
 }
 window.editardificultad = editardificultad;
 
 const eliminardificultad = (id) => {
-    deleteDifficulty(id).then(()=>{
-        datatable.value.dt.ajax.reload()
+    Swal.fire({
+        title: '¿Seguro de eliminar este nivel de dificultad ?',
+        showCancelButton: true,
+        confirmButtonText: 'Si, estoy seguro!',
+        cancelButtonText: `Cancelar`,
+        allowEnterKey: false,
+        allowOutsideClick: false,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.showLoading()
+            deleteDifficulty(id).then(() => {
+                datatable.value.dt.ajax.reload()
+                Swal.fire({
+                    icon: 'success',
+                    onBeforeOpen() {
+                        Swal.hideLoading()
+                    },
+                    title: 'Se ha eliminado el nivel de dificultad exitosamente',
+                })
+            })
+        }
     })
+
 
 
 }
@@ -118,7 +141,8 @@ window.eliminardificultad = eliminardificultad;
             <header class=" card-header noborder">
                 <h4 class="card-title">Niveles de dificultad
                 </h4>
-                <button  @click="agregardificultad" class="btn inline-flex justify-center btn-success" data-bs-toggle="modal" data-bs-target="#difficultiesmodal">Añadir dificultad</button>
+                <button @click="agregardificultad" class="btn inline-flex justify-center btn-success" data-bs-toggle="modal"
+                    data-bs-target="#difficultiesmodal">Añadir dificultad</button>
             </header>
             <div class="card-body px-6 pb-6">
                 <div class="overflow-x-auto -mx-6 dashcode-data-table">
@@ -127,36 +151,36 @@ window.eliminardificultad = eliminardificultad;
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden ">
                             <DataTable class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700"
-                            ref="datatable" :ajax="DataTableajax" :options="DataTableoptions" :columns="DataTabledata" >
-                            <thead class="border-t border-slate-100 dark:border-slate-800">
+                                ref="datatable" :ajax="DataTableajax" :options="DataTableoptions" :columns="DataTabledata">
+                                <thead class="border-t border-slate-100 dark:border-slate-800">
 
-                                <tr>
+                                    <tr>
 
-                                    <th scope="col" class=" table-th w-[100px] ">
-                                        Id
-                                    </th>
+                                        <th scope="col" class=" table-th w-[100px] ">
+                                            Id
+                                        </th>
 
-                                    <th scope="col" class=" table-th ">
-                                        Nombre
-                                    </th>
+                                        <th scope="col" class=" table-th ">
+                                            Nombre
+                                        </th>
 
-                                    <th scope="col" class=" table-th !w-[100px] ">
-                                        Accion
-                                    </th>
+                                        <th scope="col" class=" table-th !w-[100px] ">
+                                            Accion
+                                        </th>
 
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
-                            </tbody>
-                        </DataTable>
+                                </tbody>
+                            </DataTable>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<DifficultiesModal :titulo="nombremodal" ref="modal" @guardar="guardarDificultad">
+    <DifficultiesModal :titulo="nombremodal" ref="modal" @guardar="guardarDificultad">
 
-</DifficultiesModal>
+    </DifficultiesModal>
 </template>
