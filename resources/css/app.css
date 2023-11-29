@@ -1,3 +1,6 @@
+.table-td{
+    text-transform: none;
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
