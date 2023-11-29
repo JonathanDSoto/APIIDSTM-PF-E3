@@ -30,3 +30,11 @@ export const updateCategory = async (id,data) => {
     })
     return respuesta.data.data;
 }
+
+export const deleteCategory = async (id) => {
+    const respuesta = await axios.delete("categories/"+id,{
+
+
+    })
+    return respuesta.data.data;
+}

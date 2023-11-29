@@ -3,8 +3,9 @@ import NonoBreadcrums from '../components/NonoBreadcrums.vue';
 import CategoriesModal from '../components/categories/CategoriesModal.vue';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
-import { getCategories, getCategory, updateCategory, addCategory } from '../api/categories';
+import { getCategories, getCategory, updateCategory, addCategory, deleteCategory } from '../api/categories';
 import {ref} from "vue"
+
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
     serverSide: true,
@@ -39,12 +40,12 @@ const DataTabledata = [
                         </button>
                     </li>
                     <li>
-                        <a href="#" class=" bg-danger-500 text-danger-500 bg-opacity-30 hover:bg-opacity-100 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer last:rounded-b flex space-x-2 items-center rtl:space-x-reverse ">
+                        <button onclick="eliminarcategoria(${data.id})" class=" bg-danger-500 text-danger-500 bg-opacity-30 hover:bg-opacity-100 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer last:rounded-b flex space-x-2 items-center rtl:space-x-reverse ">
                             <span class="text-base">
                                 <iconify-icon icon="heroicons:trash"></iconify-icon>
                             </span>
                             <span class="text-sm">Eliminar</span>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -71,12 +72,20 @@ const guardarCategoria = (e) => {
         updateCategory(e.id, e).then(() => {
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
+        }).catch((e)=> {
+            if (e.response?.status == 422){
+                modal.value.validacionerrores = e.response.data.errors
+            }
         })
 
     }else{
         addCategory(e).then(() => {
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
+        }).catch((e)=> {
+            if (e.response?.status == 422){
+                modal.value.validacionerrores = e.response.data.errors
+            }
         })
     }
 
@@ -91,6 +100,14 @@ getCategory(id).then(modal.value.cargarCategoria)
 }
 window.editarcategoria = editarcategoria;
 
+const eliminarcategoria = (id) => {
+    deleteCategory(id).then(()=>{
+        datatable.value.dt.ajax.reload()
+    })
+
+
+}
+window.eliminarcategoria = eliminarcategoria;
 </script>
 <template>
     <NonoBreadcrums first="Categorias"></NonoBreadcrums>
