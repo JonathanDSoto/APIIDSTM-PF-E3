@@ -9,6 +9,7 @@ import Swal from "sweetalert2"
 
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
+    searching: false,
     serverSide: true,
     createdRow: (e) => {
         e.getElementsByTagName('td').forEach(e => e.classList.add('table-td'))
@@ -72,22 +73,56 @@ const modal = ref()
 const datatable = ref()
 const guardarDificultad = (e) => {
     if (e.id) {
+        Swal.showLoading()
         updateDifficulty(e.id, e).then(() => {
+            Swal.fire({
+                icon: 'success',
+                onBeforeOpen() {
+                    Swal.hideLoading()
+                },
+                title: 'Se ha actualizado el nivel de dificultad exitosamente',
+            })
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
         }).catch((e) => {
             if (e.response?.status == 422) {
                 modal.value.validacionerrores = e.response.data.errors
+                Swal.close()
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    onBeforeOpen() {
+                        Swal.hideLoading()
+                    },
+                    title: 'Ocurrio un error del lado del servidor, intente nuevamente mas tarde',
+                })
             }
         })
 
     } else {
+        Swal.showLoading()
         addDifficulty(e).then(() => {
+            Swal.fire({
+                icon: 'success',
+                onBeforeOpen() {
+                    Swal.hideLoading()
+                },
+                title: 'Se ha agregado el nivel de dificultad exitosamente',
+            })
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
         }).catch((e) => {
             if (e.response?.status == 422) {
                 modal.value.validacionerrores = e.response.data.errors
+                Swal.close()
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    onBeforeOpen() {
+                        Swal.hideLoading()
+                    },
+                    title: 'Ocurrio un error del lado del servidor, intente nuevamente mas tarde',
+                })
             }
         })
     }
