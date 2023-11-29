@@ -5,7 +5,7 @@ import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
 import { getCategories, getCategory, updateCategory, addCategory, deleteCategory } from '../api/categories';
 import {ref} from "vue"
-
+import Swal from "sweetalert2"
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
     serverSide: true,
@@ -95,16 +95,34 @@ const agregarcategoria = () => {
     modal.value.cargarCategoria()
 }
 const editarcategoria = (id) => {
-nombremodal.value = "Editar categoria"
-getCategory(id).then(modal.value.cargarCategoria)
+    nombremodal.value = "Editar categoria"
+    getCategory(id).then(modal.value.cargarCategoria)
 }
 window.editarcategoria = editarcategoria;
 
 const eliminarcategoria = (id) => {
-    deleteCategory(id).then(()=>{
-        datatable.value.dt.ajax.reload()
+    Swal.fire({
+        title: '¿Seguro de eliminar esta categoria?',
+        showCancelButton: true,
+        confirmButtonText: 'Si, estoy seguro!',
+        cancelButtonText: `Cancelar`,
+        allowEnterKey: false,
+        allowOutsideClick: false,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.showLoading()
+            deleteCategory(id).then(()=>{
+                Swal.fire({
+                    icon: 'success',
+                    onBeforeOpen () {
+                        Swal.hideLoading()
+                    },
+                    title: 'Se ha eliminado la categoria exitosamente',
+                })
+                datatable.value.dt.ajax.reload()
+            })
+        }
     })
-
 
 }
 window.eliminarcategoria = eliminarcategoria;
