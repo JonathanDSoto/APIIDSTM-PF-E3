@@ -55,7 +55,7 @@ const DataTabledata = [
 
 ]
 const DataTableajax = (data, callback) => {
-    getCategories(parseInt(data.start/data.length)+1).then((categories) => {
+    getCategories(parseInt(data.start/data.length)+1 , data.length).then((categories) => {
         callback({
             draw: data.draw,
             data:categories.data,
