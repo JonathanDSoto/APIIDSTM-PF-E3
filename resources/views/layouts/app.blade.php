@@ -14,6 +14,9 @@
     @vite('resources/css/app.css')
     <!-- End : Theme CSS -->
     <!-- Start : theme-store js -->
+    <script>
+        window.checkboxImage = "{{ asset("assets/images/icon/ck-white.svg") }}"
+    </script>
     <script src="{{ asset("assets/js/store.js") }}" sync></script>
 </head>
 <body class=" font-inter dashcode-app" id="body_class">
