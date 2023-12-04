@@ -1,15 +1,16 @@
 <script setup>
 import NonoBreadcrums from '../components/NonoBreadcrums.vue';
-import CategoriesModal from '../components/categories/CategoriesModal.vue';
+import DifficultiesModal from '../components/difficulties/DifficultiesModal.vue';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
-import { getCategories, getCategory, updateCategory, addCategory, deleteCategory } from '../api/categories';
-import {ref} from "vue"
+import { getDifficulties, getDifficulty, updateDifficulty, addDifficulty, deleteDifficulty } from '../api/difficulties';
+import { ref } from "vue"
 import Swal from "sweetalert2"
+
 DataTable.use(DataTablesCore);
 const DataTableoptions = {
-    serverSide: true,
     searching: false,
+    serverSide: true,
     createdRow: (e) => {
         e.getElementsByTagName('td').forEach(e => e.classList.add('table-td'))
     },
@@ -23,9 +24,10 @@ const DataTableoptions = {
     },
 }
 const DataTabledata = [
-{data:"id"},{data:"name"},
-{data: null,render: function ( data, type, row, meta ) {
-    return `<div>
+    { data: "id" }, { data: "name" },
+    {
+        data: null, render: function (data, type, row, meta) {
+            return `<div>
         <div class="relative">
             <div class="dropdown relative">
                 <button class="text-xl text-center block w-full " type="button" id="invoiceDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,7 +35,7 @@ const DataTabledata = [
                 </button>
                 <ul class=" dropdown-menu min-w-[120px] absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
                     <li>
-                        <button data-bs-toggle="modal" data-bs-target="#categoriesmodal" class=" hover:bg-slate-900 hover:text-white dark:hover:bg-slate-600 dark:hover:bg-opacity-50 w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer flex space-x-2 items-center rtl:space-x-reverse " onclick = "editarcategoria(${data.id})">
+                        <button data-bs-toggle="modal" data-bs-target="#difficultiesmodal" class=" hover:bg-slate-900 hover:text-white dark:hover:bg-slate-600 dark:hover:bg-opacity-50 w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer flex space-x-2 items-center rtl:space-x-reverse " onclick = "editardificultad(${data.id})">
                             <span class="text-base">
                                 <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                             </span>
@@ -41,7 +43,7 @@ const DataTabledata = [
                         </button>
                     </li>
                     <li>
-                        <button onclick="eliminarcategoria(${data.id})" class=" bg-danger-500 text-danger-500 bg-opacity-30 hover:bg-opacity-100 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer last:rounded-b flex space-x-2 items-center rtl:space-x-reverse ">
+                        <button onclick="eliminardificultad(${data.id})" class=" bg-danger-500 text-danger-500 bg-opacity-30 hover:bg-opacity-100 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm last:mb-0 cursor-pointer last:rounded-b flex space-x-2 items-center rtl:space-x-reverse ">
                             <span class="text-base">
                                 <iconify-icon icon="heroicons:trash"></iconify-icon>
                             </span>
@@ -52,43 +54,44 @@ const DataTabledata = [
             </div>
         </div>
     </div>`
-}}
+        }
+    }
 
 ]
 const DataTableajax = (data, callback) => {
-    getCategories(parseInt(data.start/data.length)+1 , data.length).then((categories) => {
+    getDifficulties(parseInt(data.start / data.length) + 1, data.length).then((difficulties) => {
         callback({
             draw: data.draw,
-            data:categories.data,
-            recordsTotal: categories.meta.total,
-            recordsFiltered: categories.meta.total,
+            data: difficulties.data,
+            recordsTotal: difficulties.meta.total,
+            recordsFiltered: difficulties.meta.total,
         })
     })
 }
 const nombremodal = ref()
 const modal = ref()
 const datatable = ref()
-const guardarCategoria = (e) => {
+const guardarDificultad = (e) => {
     if (e.id) {
         Swal.showLoading()
-        updateCategory(e.id, e).then(() => {
+        updateDifficulty(e.id, e).then(() => {
             Swal.fire({
                 icon: 'success',
-                onBeforeOpen () {
+                onBeforeOpen() {
                     Swal.hideLoading()
                 },
-                title: 'Se ha actualizado la categoria exitosamente',
+                title: 'Se ha actualizado el nivel de dificultad exitosamente',
             })
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
-        }).catch((e)=> {
-            if (e.response?.status == 422){
+        }).catch((e) => {
+            if (e.response?.status == 422) {
                 modal.value.validacionerrores = e.response.data.errors
                 Swal.close()
-            }else{
+            } else {
                 Swal.fire({
                     icon: 'error',
-                    onBeforeOpen () {
+                    onBeforeOpen() {
                         Swal.hideLoading()
                     },
                     title: 'Ocurrio un error del lado del servidor, intente nuevamente mas tarde',
@@ -96,26 +99,26 @@ const guardarCategoria = (e) => {
             }
         })
 
-    }else{
+    } else {
         Swal.showLoading()
-        addCategory(e).then(() => {
+        addDifficulty(e).then(() => {
             Swal.fire({
                 icon: 'success',
-                onBeforeOpen () {
+                onBeforeOpen() {
                     Swal.hideLoading()
                 },
-                title: 'Se ha agregado la categoria exitosamente',
+                title: 'Se ha agregado el nivel de dificultad exitosamente',
             })
             modal.value.closemodal()
             datatable.value.dt.ajax.reload()
-        }).catch((e)=> {
-            if (e.response?.status == 422){
-                Swal.close()
+        }).catch((e) => {
+            if (e.response?.status == 422) {
                 modal.value.validacionerrores = e.response.data.errors
-            }else{
+                Swal.close()
+            } else {
                 Swal.fire({
                     icon: 'error',
-                    onBeforeOpen () {
+                    onBeforeOpen() {
                         Swal.hideLoading()
                     },
                     title: 'Ocurrio un error del lado del servidor, intente nuevamente mas tarde',
@@ -125,19 +128,19 @@ const guardarCategoria = (e) => {
     }
 
 }
-const agregarcategoria = () => {
-    nombremodal.value = "Agregar categoria"
-    modal.value.cargarCategoria()
+const agregardificultad = () => {
+    nombremodal.value = "Agregar dificultad"
+    modal.value.cargarDificultad()
 }
-const editarcategoria = (id) => {
-    nombremodal.value = "Editar categoria"
-    getCategory(id).then(modal.value.cargarCategoria)
+const editardificultad = (id) => {
+    nombremodal.value = "Editar dificultad"
+    getDifficulty(id).then(modal.value.cargarDificultad)
 }
-window.editarcategoria = editarcategoria;
+window.editardificultad = editardificultad;
 
-const eliminarcategoria = (id) => {
+const eliminardificultad = (id) => {
     Swal.fire({
-        title: '¿Seguro de eliminar esta categoria?',
+        title: '¿Seguro de eliminar este nivel de dificultad ?',
         showCancelButton: true,
         confirmButtonText: 'Si, estoy seguro!',
         cancelButtonText: `Cancelar`,
@@ -146,32 +149,35 @@ const eliminarcategoria = (id) => {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.showLoading()
-            deleteCategory(id).then(()=>{
+            deleteDifficulty(id).then(() => {
+                datatable.value.dt.ajax.reload()
                 Swal.fire({
                     icon: 'success',
-                    onBeforeOpen () {
+                    onBeforeOpen() {
                         Swal.hideLoading()
                     },
-                    title: 'Se ha eliminado la categoria exitosamente',
+                    title: 'Se ha eliminado el nivel de dificultad exitosamente',
                 })
-                datatable.value.dt.ajax.reload()
             })
         }
     })
 
+
+
 }
-window.eliminarcategoria = eliminarcategoria;
+window.eliminardificultad = eliminardificultad;
 </script>
 <template>
-    <NonoBreadcrums first="Categorias"></NonoBreadcrums>
+    <NonoBreadcrums first="Niveles de Dificultad"></NonoBreadcrums>
 
 
     <div class=" space-y-5">
         <div class="card">
             <header class=" card-header noborder">
-                <h4 class="card-title">Categorias
+                <h4 class="card-title">Niveles de dificultad
                 </h4>
-                <button  @click="agregarcategoria" class="btn inline-flex justify-center btn-success" data-bs-toggle="modal" data-bs-target="#categoriesmodal">Añadir categoria</button>
+                <button @click="agregardificultad" class="btn inline-flex justify-center btn-success" data-bs-toggle="modal"
+                    data-bs-target="#difficultiesmodal">Añadir dificultad</button>
             </header>
             <div class="card-body px-6 pb-6">
                 <div class="overflow-x-auto -mx-6 dashcode-data-table">
@@ -180,37 +186,36 @@ window.eliminarcategoria = eliminarcategoria;
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden ">
                             <DataTable class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700"
-                            ref="datatable" :ajax="DataTableajax" :options="DataTableoptions" :columns="DataTabledata" >
-                            <thead class="border-t border-slate-100 dark:border-slate-800">
+                                ref="datatable" :ajax="DataTableajax" :options="DataTableoptions" :columns="DataTabledata">
+                                <thead class="border-t border-slate-100 dark:border-slate-800">
 
-                                <tr>
+                                    <tr>
 
-                                    <th scope="col" class=" table-th w-[100px] ">
-                                        Id
-                                    </th>
+                                        <th scope="col" class=" table-th w-[100px] ">
+                                            Id
+                                        </th>
 
-                                    <th scope="col" class=" table-th ">
-                                        Nombre
-                                    </th>
+                                        <th scope="col" class=" table-th ">
+                                            Nombre
+                                        </th>
 
-                                    <th scope="col" class=" table-th !w-[100px] ">
-                                        Accion
-                                    </th>
+                                        <th scope="col" class=" table-th !w-[100px] ">
+                                            Accion
+                                        </th>
 
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
-                            </tbody>
-                        </DataTable>
+                                </tbody>
+                            </DataTable>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<CategoriesModal :titulo="nombremodal" ref="modal" @guardar="guardarCategoria">
+    <DifficultiesModal :titulo="nombremodal" ref="modal" @guardar="guardarDificultad">
 
-</CategoriesModal>
+    </DifficultiesModal>
 </template>
-
