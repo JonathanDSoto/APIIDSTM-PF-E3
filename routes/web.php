@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\NonogramsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,13 +47,9 @@ Route::get('/admin/usuarios/{id}', function () {
     return view('panel.usuarios.details');
 })->middleware('auth');
 
-Route::get('/admin/nonogramas', function () {
-    return view('panel.nonogramas.index');
-})->middleware('auth');
+Route::get('/admin/nonogramas', [NonogramsController::class, 'index'])->middleware('auth');
 
-Route::get('/admin/nonogramas/{id}', function () {
-    return view('panel.nonogramas.details');
-})->middleware('auth');
+Route::get('/admin/nonogramas/{id}', [NonogramsController::class, 'details'])->middleware('auth');
 
 Route::get('/admin/modales', function () {
     return view('panel.modales.index');
