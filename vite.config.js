@@ -7,6 +7,12 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
-        }), vuePlugin()
+        }), vuePlugin({
+            template:{
+                compilerOptions:{
+                    isCustomElement: (tag) => tag.startsWith('nonogram-')
+                }
+            }
+        })
     ],
 });
