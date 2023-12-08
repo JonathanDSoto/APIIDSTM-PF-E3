@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\DifficultyController;
 use App\Http\Controllers\Api\NonogramController;
 use App\Http\Controllers\Api\RatingController;
 use App\Http\Controllers\Api\TagController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,5 @@ Route::apiResource('nonograms', NonogramController::class);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('tags', TagController::class);
 Route::apiResource('difficulties', DifficultyController::class);
+Route::apiResource('users', UserController::class);
 Route::middleware('auth:sanctum')->apiResource('ratings', RatingController::class);
