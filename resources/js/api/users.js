@@ -1,5 +1,5 @@
 import axios from "./base"
-export const getTags = async (page=1, amount = 10) => {
+export const getUsers = async (page=1, amount = 10) => {
     const respuesta = await axios.get("users",{
         params:{
             page,
@@ -9,14 +9,14 @@ export const getTags = async (page=1, amount = 10) => {
     return respuesta.data;
 
 }
-export const getTag = async (id) => {
+export const getUser = async (id) => {
     const respuesta = await axios.get("users/"+id,{
 
     })
     return respuesta.data.data;
 }
 
-export const addTag = async (data) => {
+export const addUser = async (data) => {
     const respuesta = await axios.post("users/",{
         ...data
 
@@ -24,7 +24,7 @@ export const addTag = async (data) => {
     return respuesta.data.data;
 }
 
-export const updateTag = async (id,data) => {
+export const updateUser = async (id,data) => {
     const respuesta = await axios.patch("users/"+id,{
         ...data
 
@@ -32,7 +32,7 @@ export const updateTag = async (id,data) => {
     return respuesta.data.data;
 }
 
-export const deleteTag = async (id) => {
+export const deleteUser = async (id) => {
     const respuesta = await axios.delete("users/"+id,{
 
 

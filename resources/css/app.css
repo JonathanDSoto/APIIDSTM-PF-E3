@@ -18,3 +18,7 @@
     --tw-ring-color: rgb(17 17 18 / var(--tw-ring-opacity));
     --tw-ring-offset-width: 1px;
   }
+
+  .form-label{
+    text-transform:  none;
+  }
