@@ -30,14 +30,6 @@
 				</a>
 			</li>
 			<!-- Icons -->
-			<li class="">
-				<a href="/admin/tamaños" class="navItem">
-					<span class="flex items-center">
-						<iconify-icon class=" nav-icon" icon="geo:turf-size"></iconify-icon>
-						<span>Tamaños</span>
-					</span>
-				</a>
-			</li>
             <li class="">
 				<a href="/admin/nivelDificultad" class="navItem">
 					<span class="flex items-center">
