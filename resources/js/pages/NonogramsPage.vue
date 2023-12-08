@@ -52,14 +52,14 @@ const DataTabledata = [
     {
         data: null,
         render: function (data) {
-            const dificultad = (difficulties.value ?? []).find(e => e.id == data.difficulty_id)?.name ?? '< dificultad no cargada >'
+            const dificultad = (difficulties.value ?? []).find(e => e.id == data.difficulty_id || e.id == data.difficulty?.id)?.name ?? '< dificultad no definida >'
             return `${dificultad}`;
         }
     },
     {
         data: null,
         render: function (data) {
-            const categoria = (categories.value ?? []).find(e => e.id == data.category_id)?.name ?? '< categoria no cargada >'
+            const categoria = (categories.value ?? []).find(e => e.id == data.category_id || e.id == data.category?.id)?.name ?? '< categoria no definida >'
             return `${categoria}`;
         }
     },

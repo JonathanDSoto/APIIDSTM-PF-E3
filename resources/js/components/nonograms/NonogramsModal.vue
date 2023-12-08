@@ -78,7 +78,7 @@ defineExpose({ cargarNonograma, closemodal, validacionerrores })
 <template>
     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="nonogramsmodal" tabindex="-1" aria-labelledby="modal_editar" aria-hidden="true">
-        <div class="modal-dialog top-1/2 !-translate-y-1/2 relative w-auto pointer-events-none">
+        <div class="modal-dialog relative w-auto pointer-events-none">
             <div
                 class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                 <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
@@ -130,7 +130,7 @@ defineExpose({ cargarNonograma, closemodal, validacionerrores })
                             </label>
                         </div>
                         <div class="input-area">
-                            <label for="difficulty" class="form-label">Dificultad*</label>
+                            <label for="difficulty" class="form-label">Dificultad</label>
                             <select v-model="difficulty_idNonograma" class="form-control" name="difficulty" id="difficulty">
                                 <option v-for="difficulty in props.difficulties" :value="difficulty.id">{{ difficulty.name
                                 }}</option>
@@ -140,7 +140,7 @@ defineExpose({ cargarNonograma, closemodal, validacionerrores })
                                 class="font-Inter block text-sm text-danger-500 pt-2">{{ message }}</span>
                         </div>
                         <div class="input-area">
-                            <label for="category" class="form-label">Categoria*</label>
+                            <label for="category" class="form-label">Categoria</label>
                             <select v-model="category_idNonograma" class="form-control" name="category" id="category">
                                 <option v-for="category in props.categories" :value="category.id">{{ category.name
                                 }}</option>
