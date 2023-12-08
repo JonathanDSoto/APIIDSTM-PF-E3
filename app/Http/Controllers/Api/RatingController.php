@@ -27,7 +27,7 @@ class RatingController extends Controller
     public function store(StoreRatingRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = Auth::getUser()->id;
+        $data['user_id'] = $request->user()->id;
         return new RatingResource(Rating::create($data), false);
     }
 

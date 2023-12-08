@@ -24,7 +24,7 @@ class StoreRatingRequest extends FormRequest
     {
         return [
             'nonogram_id' => [ 'required', 'exists:nonograms,id' ],
-            'rating' => ['required', 'integer', 'min:0', 'max:5'],
+            'rating' => ['required', 'integer', 'min:0', 'max:10'],
         ];
     }
 
