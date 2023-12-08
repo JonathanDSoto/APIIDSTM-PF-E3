@@ -9,7 +9,7 @@ class NonogramResource extends JsonResource
 {
     protected bool $include_relations;
 
-    public function __construct($res, $include_relations = false) {
+    public function __construct($res, $i = null, $include_relations = false) {
         parent::__construct($res);
         $this->include_relations = $include_relations;
     }

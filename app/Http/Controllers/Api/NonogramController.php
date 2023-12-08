@@ -35,7 +35,7 @@ class NonogramController extends Controller
      */
     public function show(Nonogram $nonogram)
     {
-        return new NonogramResource($nonogram, true);
+        return new NonogramResource($nonogram, null, true);
     }
 
     /**
